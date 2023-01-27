@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Raferson Neres">
+  <title>Missão 2 | css</title>
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
+  <link href="css\bootstrap.min.css" rel="stylesheet">
+  <style>
+      img {
+        width: 300px;
+        height: 200px; 
+      }  
+    body {
+        max-width:1200px;   
+    }
+  </style>
+</head>
+<body background="red">
+</head>
+<body class="bg-warning container-fluid">
+  <h1 class="text-center">Receitas</h1>
+  <div id="pnlCatalogo" class="d-flex flex-wrap"></div> 
+  <script>
+    var receitas = [
+            {
+                "titulo": "Pão amanteigado",
+                "imagem": "pão.jpg",
+                "preparo": "Instruções de preparo da receita ",
+                "ingredientes": ['1 ovo ',
+                '1 xícara (240ml) de leite morno',
+                '4 x;icaras de farinha de trigo ',
+                '4 colheres (sopa) de açúcar',
+                '1/2 colher (chá) de sal',
+                '4 colheres manteiga ou margarina',
+                '1 fermento biologico seco (10g)']
+            },
+            {
+                "titulo": "Pão Simples",
+                "imagem": "pao simples.webp",
+                "preparo": "Instruções de preparo da receita ",
+                "ingredientes": ['1 xícara de leite morno',
+                '2 ovos',
+                '1 colher de açucar',
+                '1 pitada de sal',
+                '1/2 xícara de óleo',
+                ]
+            },
+            {
+              "titulo": "Sequilhos",
+              "imagem": "sequilhos.webp",
+              "preparo": "Instruções de preparo da receita ",
+              "ingredientes": ['500gr de maizena',
+              '4 colheres de margarina',
+              '1 gema',
+              '1 cx de leite condensado',
+              '1 pacote coco ralado']
+            },
+            {
+              "titulo": "Pão caseiro",
+              "imagem": "pão caseiro.jpg",
+              "preparo": "Instruções de preparo da receita ",
+              "ingredientes": ['1 colher de (sopa) sal',
+              '2 colheres (sopa) de açucar',
+              '2 colheres de (sopa) de manteiga',
+              '20 gramas de fermento biologicoo',
+              '1 ovo',
+              '500 ml de água morna']
+            }
+          
+        ];
+        function getListaIngredientes(receita) {
+            let lista = "<ul>";
+            for (let i = 0; i < receita.ingredientes.length; i++) {
+                lista += "<li>" + receita.ingredientes[i] + "</li>";
+            }
+            lista += "</ul>";
+            return lista;
+        }
+        function getCard(receita) {
+            let card = "<div class='card'>";
+            card += "<img src='" + receita.imagem + "' class='card-img-top'>";
+            card += "<div class='card-body'>";
+            card += "<h5 class='card-title'>" + receita.titulo + "</h5>";
+            card += "<p class='card-text'>" + receita.preparo + "</p>";
+            card += getListaIngredientes(receita);
+            card += "</div>";
+            card += "</div>";
+            return card;
+        }
+        function preencheCatalogo() {
+            for (let i = 0; i < receitas.length; i++) {
+                document.getElementById("pnlCatalogo").innerHTML += getCard(receitas[i]);
+            }
+        }
+        window.onload = preencheCatalogo;
+    </script>
+</body>
+</html>
